@@ -7,8 +7,12 @@ import datetime
 
 nm = nmap.PortScanner()
 
-
+print('                                                    ')
+time.sleep(1)
 print('----------------------------------------------------')
+how_long = raw_input(int('How many minutes do you want to scan for? '))
+repeat = how_long*2 #because 2 sweeps per minute
+
 time.sleep(1)
 
 def sweep():
@@ -18,4 +22,4 @@ def sweep():
 	    print('{0}:{1} '.format(host, status)) + '@ ' + (  datetime.datetime.now().strftime("%H:%M:%S"))
 for i in range(5):
 	sweep()
-	time.sleep(30)
+	time.sleep(28)
