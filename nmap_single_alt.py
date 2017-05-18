@@ -7,10 +7,10 @@ import datetime
 
 nm = nmap.PortScanner()
 
-print('                                                    ')
+print('')
 time.sleep(1)
 print('----------------------------------------------------')
-print('                                                    ')
+print('')
 time.sleep(1)
 how_long = int(raw_input('How many minutes do you want to scan for? '))
 repeat = how_long*2 #because 2 sweeps per minute
