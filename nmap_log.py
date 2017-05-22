@@ -8,13 +8,12 @@ import sys
 
 nm = nmap.PortScanner()
 
-time.sleep(1)
+
 print('----------------------------------------------------')
-print('                                                    ')
+print(' ')
 time.sleep(1)
-how_long = int(raw_input('How many minutes do you want to scan for? '))
-repeat = how_long*2 # because 2 sweeps per minute
-time.sleep(1)
+#how_long = int(raw_input('How many minutes do you want to scan for? '))
+#repeat = how_long*2 # because 2 sweeps per minute
 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print('Scan started at %s ') % time_now
 
@@ -27,6 +26,6 @@ def sweep():
         print('----------------------------------------------------')
         sys.stdout.close()
         
-for i in range(repeat):
+for i in range(144):
 	sweep()
-	time.sleep(60)
+	time.sleep(300)
