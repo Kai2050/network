@@ -33,7 +33,7 @@ def block():
                 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 sweep()
                 #count+=1
-                if count > 3:
+                if count > 2:
                         print('count is %s, OG is in' % count)
                 else:
                         print('OG is out')
@@ -46,4 +46,5 @@ for i in range(8): #loop for 2 hours
 
 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print('Scan finished at %s ') % time_now	
+
 
