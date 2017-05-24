@@ -37,13 +37,13 @@ def video_5min():
         return datetime.datetime.now().strftime("%Y-%m-%d_%H.%M.%S.h264")
 	filename = "%s%s" % (save_dir, get_file_name())
     print("*** OG is out, starting to record 5 minutes at %s ***" % (time_now))
-	camera.start_preview()
-	camera.start_recording(filename)
-	while (datetime.datetime.now() - start).seconds < 300:
-	    camera.annotate_text = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-	    camera.wait_recording(0.2)
-	camera.stop_recording()
-	camera.stop_preview()
+    camera.start_preview()
+    camera.start_recording(filename)
+    while (datetime.datetime.now() - start).seconds < 300:
+        camera.annotate_text = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        camera.wait_recording(0.2)
+    camera.stop_recording()
+    camera.stop_preview()
     print("Finished recording @ %s" % (time_now))
 
 #Ping hostname
