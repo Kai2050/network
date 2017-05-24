@@ -27,6 +27,7 @@ def video_5min():
     time.sleep(300)
     camera.stop_recording()
     camera.stop_preview()
+    time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print("Finished recording @ %s" % (time_now))
 
 
