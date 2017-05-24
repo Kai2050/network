@@ -33,7 +33,7 @@ save_dir = "/home/pi/vid/"
 def video_5min():
     time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     start = datetime.datetime.now()
-	def get_file_name():
+    def get_file_name():
         return datetime.datetime.now().strftime("%Y-%m-%d_%H.%M.%S.h264")
 	filename = "%s%s" % (save_dir, get_file_name())
     print("*** OG is out, starting to record 5 minutes at %s ***" % (time_now))
