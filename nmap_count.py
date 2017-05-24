@@ -35,6 +35,7 @@ nm = nmap.PortScanner()
 nm.scan(hosts='10.0.0.8', arguments='-sP -n -PE -PA21,23,80,3389')
 
 def sweep():
+        count=0
         print('----------------------------------------------------')
         time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print('Scan started at %s ') % time_now
@@ -46,7 +47,7 @@ def sweep():
                         print('OG is in, counted up by 1')
 
 def block():
-        count=0
+        #count=0
         sweep()
         if count > 0:
                 print('count is %s, OG is in' % count)
