@@ -45,10 +45,6 @@ def sweep():
                 if nm[host].state()=='up':
                         count+=1
                         print('OG is in, counted up by 1')
-
-def block():
-        #count=0
-        sweep()
         if count > 0:
                 print('count is %s, OG is in' % count)
                 time.sleep(300)
@@ -57,7 +53,7 @@ def block():
                 video_5min()
 
 for i in range(12): #loop for 1 hour
-        block()
+        sweep()
         time.sleep(1)
 
 
