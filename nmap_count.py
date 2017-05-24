@@ -52,7 +52,7 @@ def sweep():
                 print('OG is out')
                 video_5min()
 
-for i in range(12): #loop for 1 hour
+for i in range(36): #loop for 1 hour
         sweep()
         time.sleep(1)
 
