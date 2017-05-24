@@ -30,6 +30,24 @@ def video_5min():
     time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print("Finished recording @ %s" % (time_now))
 
+def repeat():
+	start = datetime.datetime.now()
+	def get_file_name():
+	 return datetime.datetime.now().strftime("%Y-%m-%d_%H.%M.%S.h264")
+	time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	filename = "%s%s" % (save_dir, get_file_name())
+	time.sleep(1)
+	print("Starting to record a %s minute chunk at %s" % (chunk_size, time_now))
+
+	camera.start_preview()
+	camera.start_recording(filename)
+
+	while (datetime.datetime.now() - start).seconds < chunk_size_secs:
+	    camera.annotate_text = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	    camera.wait_recording(0.2)
+	camera.stop_recording()
+	camera.stop_preview()
+
 #Ping hostname
 
 def ping():
