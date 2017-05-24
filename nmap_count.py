@@ -29,15 +29,14 @@ def video_5min():
     camera.stop_preview()
     print("Finished recording @ %s" % (time_now))
 
-#NMAP scan for host
 
 nm = nmap.PortScanner()
-nm.scan(hosts='10.0.0.8', arguments='-sP -n -PE -PA21,23,80,3389')
 
 def sweep():
         count=0
         print('----------------------------------------------------')
         time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        nm.scan(hosts='10.0.0.8', arguments='-sP -n -PE -PA21,23,80,3389')
         print('Scan started at %s ') % time_now
         for host in nm.all_hosts():
                 print('Host : %s (%s)' % (host, nm[host].hostname()))
@@ -46,8 +45,8 @@ def sweep():
                         count+=1
                         print('OG is in, counted up by 1')
         if count > 0:
-                print('count is %s, OG is in' % count)
-                time.sleep(300)
+                print('Count is %s, OG is in. Scanning again in 3 minutes' % count)
+                time.sleep(180)
         else:
                 print('OG is out')
                 video_5min()
