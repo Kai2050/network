@@ -36,11 +36,11 @@ def sweep():
         time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print('Scan started at %s ') % time_now
         for host in nm.all_hosts():
-                #print('Host : %s (%s)' % (host, nm[host].hostname()))
-                #print('State : %s' % nm[host].state())
+                print('Host : %s (%s)' % (host, nm[host].hostname()))
+                print('State : %s' % nm[host].state())
                 if nm[host].state()=='up':
                         count+=1
-                        print('Counted up 1')
+                        print('OG is in, counted up by 1')
         time.sleep(0.1)
 
 def block():
@@ -48,15 +48,15 @@ def block():
         for i in range(5):
                 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 sweep()
-                #count+=1
-                if count > 1:
+                
+                if count > 0:
                         print('count is %s, OG is in' % count)
+                        time.sleep(300)
                 else:
                         print('OG is out')
                         video_5min()
-
-                time.sleep(300)
-for i in range(2): #loop for 2 hours
+                time.sleep(0.2)
+for i in range(12): #loop for 1 hours
         block()
         time.sleep(0.2)
 
