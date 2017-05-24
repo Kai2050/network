@@ -12,7 +12,8 @@ camera.led = False
 camera.framerate = 25
 camera.resolution = (960, 540)
 save_dir = "/home/pi/vid/"
-time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+#Record 5 minuts of video
 
 def video_5min():
     time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -28,6 +29,8 @@ def video_5min():
     camera.stop_preview()
     print("Finished recording @ %s" % (time_now))
 
+#NMAP scan for host
+
 nm = nmap.PortScanner()
 nm.scan(hosts='10.0.0.8', arguments='-sP -n -PE -PA21,23,80,3389')
 
@@ -41,24 +44,20 @@ def sweep():
                 if nm[host].state()=='up':
                         count+=1
                         print('OG is in, counted up by 1')
-        time.sleep(0.1)
 
 def block():
         count=0
-        for i in range(5):
-                time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                sweep()
-                
-                if count > 0:
-                        print('count is %s, OG is in' % count)
-                        time.sleep(300)
-                else:
-                        print('OG is out')
-                        video_5min()
-                time.sleep(0.2)
-for i in range(12): #loop for 1 hours
+        sweep()
+        if count > 0:
+                print('count is %s, OG is in' % count)
+                time.sleep(300)
+        else:
+                print('OG is out')
+                video_5min()
+
+for i in range(12): #loop for 1 hour
         block()
-        time.sleep(0.2)
+        time.sleep(1)
 
 
 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
