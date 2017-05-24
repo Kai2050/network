@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 #python2
 
-import nmap
 import time
 import datetime
 from picamera import PiCamera
+import os
 
 camera = PiCamera()
 camera.rotation = 180
@@ -30,30 +30,23 @@ def video_5min():
     time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print("Finished recording @ %s" % (time_now))
 
+#Ping hostname
 
-nm = nmap.PortScanner()
-
-def sweep():
-        count=0
+def ping():
         print('----------------------------------------------------')
         time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        nm.scan(hosts='10.0.0.8', arguments='-sP -n -PE -PA21,23,80,3389')
         print('Scan started at %s ') % time_now
-        for host in nm.all_hosts():
-                print('Host : %s (%s)' % (host, nm[host].hostname()))
-                print('State : %s' % nm[host].state())
-                if nm[host].state()=='up':
-                        count+=1
-                        print('OG is in, counted up by 1')
-        if count > 0:
-                print('Count is %s, OG is in. Scanning again in 3 minutes' % count)
-                time.sleep(180)
+        hostname = "10.0.0.8" #example
+        response = os.system("ping -c 1 " + hostname)
+        if response == 0:
+            print('OG is in. Scanning again in 3 minutes') #hostname, 'is up!'
+            time.sleep(180)
         else:
-                print('OG is out')
-                video_5min()
+            print('OG is out, starting to record 5 minutes of video')
+            video_5min()
 
 for i in range(36): #loop for 1 hour
-        sweep()
+        ping()
         time.sleep(1)
 
 
