@@ -20,7 +20,7 @@ def video_5min():
     def get_file_name():
       return datetime.datetime.now().strftime("%Y-%m-%d_%H.%M.%S.h264")
     filename = "%s%s" % (save_dir, get_file_name())
-    print("Starting to record 5 minutes at %s" % (time_now))
+    print("--- OG is out, starting to record 5 minutes at %s ---" % (time_now))
     camera.annotate_text = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     camera.start_preview()
     camera.start_recording(filename)
@@ -37,12 +37,15 @@ def ping():
         time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print('Scan started at %s ') % time_now
         hostname = "10.0.0.8" #example
-        response = os.system("ping -c 1 " + hostname)
+        response = os.system("ping -c 3 " + hostname)
         if response == 0:
-            print('OG is in. Scanning again in 3 minutes') #hostname, 'is up!'
+            print(' ')
+            time.sleep(1)
+            print('--- OG is in. Scanning again in 3 minutes ---') #hostname, 'is up!'
             time.sleep(180)
         else:
-            print('OG is out, starting to record 5 minutes of video')
+            print(' ')
+            #print('OG is out, starting to record 5 minutes of video')
             video_5min()
 
 for i in range(36): #loop for 1 hour
