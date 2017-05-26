@@ -64,7 +64,7 @@ def ping():
             #print('OG is out, starting to record 5 minutes of video')
             video_5min()
 
-for i in range(36): #loop for 1 hour
+for i in range(60): #loop for 5 hours
         ping()
         time.sleep(1)
 
