@@ -14,4 +14,4 @@ def get_external_ip():
     return address
 
 if __name__ == '__main__':
-    print( get_external_ip() + time_now )
+    print( get_external_ip() + ' %s' % time_now )
