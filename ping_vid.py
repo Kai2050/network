@@ -38,7 +38,7 @@ def ping():
         print('----------------------------------------------------')
         time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print('Scan started at %s ') % time_now
-        hostname = "10.0.0.8" #example
+        hostname = "10.0.0.16" #example
         response = os.system("ping -c 3 " + hostname)
         if response == 0:
             print(' ')
