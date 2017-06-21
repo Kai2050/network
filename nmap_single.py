@@ -20,6 +20,7 @@ time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print('Scan started at %s ') % time_now
 
 def sweep():
+	print('----------------------------------------------------')
 	nm.scan(hosts='10.0.0.16', arguments='-sn')
 	hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
 	for host, status in hosts_list:
