@@ -13,11 +13,11 @@ def ping():
   if response == 0:
     print '- - - - - - - - - - - - - - - - - - - - - - - - - - '
     print hostname, 'is up @ %s !' % time_now
-    print '- - - - - - - - - - - - - - - - - - - - - - - - - - '
+    
   else:
     print '- - - - - - - - - - - - - - - - - - - - - - - - - - '
     print hostname, 'is down @ %s !' % time_now
-    print '- - - - - - - - - - - - - - - - - - - - - - - - - - '
+    
 for i in range(60):
   ping()
   time.sleep(300)
