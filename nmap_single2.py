@@ -17,9 +17,9 @@ repeat = how_long/5 #because 2 sweeps per minute
 
 time.sleep(1)
 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-print(time_now)
 
 print(('Scan started at %s ') % time_now)
+print(' ')
 
 def sweep():
 	nm.scan(hosts='10.0.0.10', arguments='-sn')
@@ -32,3 +32,5 @@ for i in range (int(repeat)):
     print('----------------------------------------------------')
 time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print(('Scan finished at %s ') % time_now)
+
+
