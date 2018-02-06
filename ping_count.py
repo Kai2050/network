@@ -2,10 +2,10 @@ import time
 import datetime
 import os
 
-def ping(): # 30 minute cycle
+def ping(): # 1 hour cycle
     time_start = time.time()
     number = 0
-    for number in range(6):
+    while True:
         #print('Scan started at %s ') % time_start
         hostname = "10.0.0.17"
         response = os.system("ping -c 1 " + hostname)
@@ -21,7 +21,7 @@ def ping(): # 30 minute cycle
         print(time_elapsed)
         print(time.strftime("%H:%M:%S", time.gmtime(time_elapsed)))
 
-        if time_elapsed > 600 and (number == 0):
+        if time_elapsed > 1200 and (number == 0):
             print('...checking again')
             response = os.system("ping -c 1 " + hostname)
             if response != 0:
