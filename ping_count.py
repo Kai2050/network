@@ -2,25 +2,36 @@ import time
 import datetime
 import os
 
-def ping():
-    time_start = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    count = 0
-        for i in range(12):
-            print('Scan started at %s ') % time_now
-            hostname = "10.0.0.16"
-            response = os.system("ping -c 3 " + hostname)
-            if response == 0:
-                count=+1
-                print('Count increase by 1. Scanning again in 5 minutes ***') #hostname, 'is up!'
-            else:
-                print('No host found')
-            current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            if (current_time - time_start) > 1 and count = 0
-                response = os.system("ping -c 3 " + hostname)
-                if response == 0:
-                    print ('success')
-            time.sleep(300)
+def ping(): # 30 minute cycle
+    time_start = time.time()
+    number = 0
+    for number in range(6):
+        #print('Scan started at %s ') % time_start
+        hostname = "10.0.0.17"
+        response = os.system("ping -c 1 " + hostname)
+        if response == 0:
+            number = number +1
+            print('Count increase by 1. Scanning again in 5 minutes ***')
+        #else:
+#            print('No host found...checking if blip')
 
-while True:
+        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print(number)
+        time_elapsed = time.time() - time_start
+        print(time_elapsed)
+        print(time.strftime("%H:%M:%S", time.gmtime(time_elapsed)))
+
+        if time_elapsed > 600 and (number == 0):
+            print('...checking again')
+            response = os.system("ping -c 1 " + hostname)
+            if response != 0:
+                print('flash lights')
+            
+        time.sleep(300)
+        
+
+        
+for i in range(5):
+    
         ping()
-        time.sleep(1)
+#        time.sleep(1)
